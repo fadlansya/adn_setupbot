@@ -1,0 +1,15 @@
+{
+  "name": "setupbot",
+  "version": "1.0.0",
+  "description": "Bot Discord untuk setting server secara cepat dengan template dan slash command",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "check": "node src/check-templates.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.28.1",
+    "dotenv": "^18.0.10"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "name": "Toko",
+  "description": "Server toko online: katalog produk, order, pembayaran, testimoni, dan area reseller.",
+  "settings": { "defaultNotifications": "OnlyMentions", "verificationLevel": "Low" },
+  "roles": [
+    { "name": "👑 Owner", "color": "#F1C40F", "hoist": true, "permissions": ["Administrator"] },
+    { "name": "🛡️ Admin", "color": "#E74C3C", "hoist": true, "mentionable": true,
+      "permissions": ["ManageGuild", "ManageChannels", "ManageRoles", "ManageMessages", "KickMembers", "BanMembers", "ModerateMembers", "ManageNicknames", "ViewAuditLog", "MentionEveryone"] },
+    { "name": "🎧 Customer Service", "color": "#3498DB", "hoist": true, "mentionable": true,
+      "permissions": ["ManageMessages", "ModerateMembers", "ManageThreads"] },
+    { "name": "📦 Staff Toko", "color": "#1ABC9C", "hoist": true, "mentionable": true,
+      "permissions": ["ManageMessages"] },
+    { "name": "🤝 Reseller", "color": "#E67E22", "hoist": true, "mentionable": true },
+    { "name": "💎 Pelanggan VIP", "color": "#9B59B6", "hoist": true },
+    { "name": "🛍️ Pelanggan", "color": "#2ECC71" },
+    { "name": "🤖 Bot", "color": "#95A5A6" }
+  ],
+  "categories": [
+    {
+      "name": "📌 INFORMASI",
+      "access": {
+        "@everyone": { "deny": ["SendMessages", "CreatePublicThreads"] },
+        "🛡️ Admin": { "allow": ["SendMessages"] }
+      },
+      "channels": [
+        { "name": "📜・aturan", "topic": "Syarat dan ketentuan berbelanja.",
+          "message": "**Aturan & Ketentuan {server}**\n\n1. Baca katalog dan cara order sebelum bertanya.\n2. Pembayaran hanya lewat metode resmi di channel metode-pembayaran.\n3. Admin TIDAK PERNAH meminta transfer lewat DM. Hati-hati penipuan!\n4. Kirim bukti transfer di channel konfirmasi-pembayaran.\n5. Komplain dan garansi wajib menyertakan bukti (screenshot/video).\n6. Dilarang promosi toko lain dan spam.\n\nTerima kasih sudah berbelanja! 🛒" },
+        { "name": "📢・pengumuman", "topic": "Info toko, jam operasional, dan update penting." },
+        { "name": "👋・selamat-datang", "topic": "Sambutan untuk pelanggan baru.", "systemChannel": true },
+        { "name": "📝・cara-order", "topic": "Langkah-langkah order.",
+          "message": "**Cara Order**\n\n1. Lihat produk di channel katalog.\n2. Tulis pesanan di channel order dengan format:\n```\nNama produk :\nJumlah      :\nCatatan     :\n```\n3. Tunggu CS membalas dan mengirim total harga.\n4. Bayar sesuai metode-pembayaran.\n5. Kirim bukti di konfirmasi-pembayaran.\n6. Pesanan diproses. Jangan lupa kasih testimoni! ⭐" },
+        { "name": "💳・metode-pembayaran", "topic": "Daftar rekening dan e-wallet resmi.",
+          "message": "**Metode Pembayaran Resmi**\n\n(Admin: edit pesan ini dan isi rekening/e-wallet toko kamu.)\n\n🏦 Bank   : -\n📱 E-wallet : -\n🔳 QRIS   : -" }
+      ]
+    },
+    {
+      "name": "🛒 PRODUK",
+      "access": {
+        "@everyone": { "deny": ["SendMessages", "CreatePublicThreads"] },
+        "🛡️ Admin": { "allow": ["SendMessages"] },
+        "📦 Staff Toko": { "allow": ["SendMessages"] }
+      },
+      "channels": [
+        { "name": "🛒・katalog", "topic": "Daftar produk dan harga." },
+        { "name": "🔥・promo", "topic": "Diskon dan promo terbaru." },
+        { "name": "📦・update-stok", "topic": "Info restock dan stok habis." }
+      ]
+    },
+    {
+      "name": "💳 TRANSAKSI",
+      "access": {
+        "🎧 Customer Service": { "allow": ["ManageMessages"] }
+      },
+      "channels": [
+        { "name": "🛍️・order", "topic": "Tulis pesanan sesuai format di cara-order.", "slowmode": 10 },
+        { "name": "🧾・konfirmasi-pembayaran", "topic": "Kirim bukti transfer di sini.", "slowmode": 10 },
+        { "name": "⭐・testimoni", "topic": "Ceritakan pengalaman belanja kamu.", "slowmode": 30 },
+        { "name": "🛠️・garansi-komplain", "topic": "Ajukan klaim garansi dengan bukti.", "slowmode": 30 }
+      ]
+    },
+    {
+      "name": "💬 KOMUNITAS",
+      "channels": [
+        { "name": "💬・ngobrol", "topic": "Ngobrol santai sesama pelanggan." },
+        { "name": "❓・tanya-produk", "topic": "Tanya seputar produk sebelum beli." },
+        { "name": "🔊 Lounge", "type": "voice" }
+      ]
+    },
+    {
+      "name": "🤝 RESELLER",
+      "access": {
+        "@everyone": { "deny": ["ViewChannel"] },
+        "🤝 Reseller": { "allow": ["ViewChannel"] },
+        "🛡️ Admin": { "allow": ["ViewChannel"] },
+        "🎧 Customer Service": { "allow": ["ViewChannel"] }
+      },
+      "channels": [
+        { "name": "📋・info-reseller", "topic": "Harga reseller dan ketentuan.",
+          "access": { "🤝 Reseller": { "allow": ["ViewChannel"], "deny": ["SendMessages"] } } },
+        { "name": "🤝・chat-reseller", "topic": "Diskusi khusus reseller." },
+        { "name": "🛍️・order-reseller", "topic": "Order khusus harga reseller." }
+      ]
+    },
+    {
+      "name": "🔒 STAFF",
+      "access": {
+        "@everyone": { "deny": ["ViewChannel"] },
+        "🛡️ Admin": { "allow": ["ViewChannel"] },
+        "🎧 Customer Service": { "allow": ["ViewChannel"] },
+        "📦 Staff Toko": { "allow": ["ViewChannel"] }
+      },
+      "channels": [
+        { "name": "🔒・staff-chat", "topic": "Koordinasi staff toko." },
+        { "name": "📊・rekap-order", "topic": "Rekap pesanan masuk dan status." },
+        { "name": "💰・laporan-keuangan", "topic": "Catatan pemasukan.",
+          "access": { "🎧 Customer Service": { "deny": ["ViewChannel"] }, "📦 Staff Toko": { "deny": ["ViewChannel"] } } },
+        { "name": "🔒 Rapat Staff", "type": "voice" }
+      ]
+    }
+  ]
+}

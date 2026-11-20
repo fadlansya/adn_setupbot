@@ -1,0 +1,91 @@
+{
+  "name": "Komunitas",
+  "description": "Server komunitas dengan channel informasi, diskusi, event, dan area staff.",
+  "settings": { "defaultNotifications": "OnlyMentions", "verificationLevel": "Low" },
+  "roles": [
+    { "name": "👑 Owner", "color": "#F1C40F", "hoist": true, "permissions": ["Administrator"] },
+    { "name": "🛡️ Admin", "color": "#E74C3C", "hoist": true, "mentionable": true,
+      "permissions": ["ManageGuild", "ManageChannels", "ManageRoles", "ManageMessages", "ManageEvents", "KickMembers", "BanMembers", "ModerateMembers", "MuteMembers", "DeafenMembers", "MoveMembers", "ManageNicknames", "ViewAuditLog", "MentionEveryone"] },
+    { "name": "🔧 Moderator", "color": "#3498DB", "hoist": true, "mentionable": true,
+      "permissions": ["ManageMessages", "KickMembers", "ModerateMembers", "MuteMembers", "MoveMembers", "ManageNicknames", "ManageThreads"] },
+    { "name": "🙋 Helper", "color": "#1ABC9C", "hoist": true, "mentionable": true,
+      "permissions": ["ManageMessages", "ManageThreads"] },
+    { "name": "🎉 Event Manager", "color": "#E67E22", "hoist": true, "mentionable": true,
+      "permissions": ["ManageEvents", "MentionEveryone", "MuteMembers", "MoveMembers"] },
+    { "name": "⭐ Kontributor", "color": "#9B59B6", "hoist": true },
+    { "name": "🔥 Member Aktif", "color": "#E91E63" },
+    { "name": "🤖 Bot", "color": "#95A5A6" },
+    { "name": "👥 Member", "color": "#2ECC71" }
+  ],
+  "categories": [
+    {
+      "name": "📌 INFORMASI",
+      "access": {
+        "@everyone": { "deny": ["SendMessages", "CreatePublicThreads"] },
+        "🛡️ Admin": { "allow": ["SendMessages"] }
+      },
+      "channels": [
+        { "name": "📜・aturan", "topic": "Wajib dibaca semua member.",
+          "message": "**Aturan Komunitas {server}**\n\n1. Hormati sesama member, staff, dan perbedaan pendapat.\n2. Dilarang SARA, ujaran kebencian, pornografi, dan konten ilegal.\n3. Dilarang spam, flood, dan promosi tanpa izin staff.\n4. Gunakan channel sesuai topiknya.\n5. Jangan membagikan data pribadi orang lain.\n6. Laporkan pelanggaran ke staff, jangan main hakim sendiri.\n\nPelanggaran bisa berakibat warning, mute, kick, atau ban." },
+        { "name": "📢・pengumuman", "topic": "Pengumuman resmi komunitas." },
+        { "name": "ℹ️・info-server", "topic": "Penjelasan channel dan role di server ini." },
+        { "name": "👋・selamat-datang", "topic": "Sambutan untuk member baru.", "systemChannel": true }
+      ]
+    },
+    {
+      "name": "💬 UMUM",
+      "channels": [
+        { "name": "💬・umum", "topic": "Obrolan umum seputar komunitas." },
+        { "name": "🙌・perkenalan", "topic": "Kenalan dulu yuk! Nama, asal, hobi.", "slowmode": 30 },
+        { "name": "🎲・off-topic", "topic": "Bahas apa saja di luar topik utama." },
+        { "name": "💡・saran-kritik", "topic": "Masukan untuk komunitas.", "slowmode": 60 }
+      ]
+    },
+    {
+      "name": "📚 DISKUSI",
+      "channels": [
+        { "name": "📚・diskusi", "topic": "Diskusi topik utama komunitas." },
+        { "name": "❓・tanya-jawab", "topic": "Tanya apa saja, member lain bantu jawab." },
+        { "name": "🎨・share-karya", "topic": "Pamerkan hasil karyamu." },
+        { "name": "🔗・link-berguna", "topic": "Kumpulan link dan sumber belajar.", "slowmode": 30 }
+      ]
+    },
+    {
+      "name": "🎉 EVENT",
+      "access": {
+        "🎉 Event Manager": { "allow": ["SendMessages", "ManageMessages"] }
+      },
+      "channels": [
+        { "name": "📅・info-event", "topic": "Jadwal dan info event.",
+          "access": { "@everyone": { "deny": ["SendMessages"] } } },
+        { "name": "🎉・diskusi-event", "topic": "Ngobrol seputar event." },
+        { "name": "🎤 Panggung Event", "type": "voice",
+          "access": { "@everyone": { "deny": ["Speak"] }, "🎉 Event Manager": { "allow": ["Speak", "MuteMembers"] } } }
+      ]
+    },
+    {
+      "name": "🔊 VOICE",
+      "channels": [
+        { "name": "🔊 Lounge 1", "type": "voice" },
+        { "name": "🔊 Lounge 2", "type": "voice" },
+        { "name": "📖 Belajar Bareng", "type": "voice" },
+        { "name": "🗣️ Rapat Kecil", "type": "voice", "userLimit": 5 }
+      ]
+    },
+    {
+      "name": "🔒 STAFF",
+      "access": {
+        "@everyone": { "deny": ["ViewChannel"] },
+        "🛡️ Admin": { "allow": ["ViewChannel"] },
+        "🔧 Moderator": { "allow": ["ViewChannel"] },
+        "🙋 Helper": { "allow": ["ViewChannel"] }
+      },
+      "channels": [
+        { "name": "🔒・staff-chat", "topic": "Koordinasi antar staff." },
+        { "name": "📋・log-moderasi", "topic": "Catatan warning, mute, dan ban." },
+        { "name": "🚨・laporan-member", "topic": "Laporan pelanggaran yang masuk." },
+        { "name": "🔒 Rapat Staff", "type": "voice" }
+      ]
+    }
+  ]
+}

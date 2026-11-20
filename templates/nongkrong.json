@@ -1,0 +1,72 @@
+{
+  "name": "Nongkrong",
+  "description": "Server santai buat ngobrol, mabar, dan nongkrong bareng teman.",
+  "settings": { "defaultNotifications": "OnlyMentions" },
+  "roles": [
+    { "name": "👑 Owner", "color": "#F1C40F", "hoist": true, "permissions": ["Administrator"] },
+    { "name": "🛡️ Admin", "color": "#E74C3C", "hoist": true, "mentionable": true,
+      "permissions": ["ManageGuild", "ManageChannels", "ManageRoles", "ManageMessages", "KickMembers", "BanMembers", "ModerateMembers", "MuteMembers", "DeafenMembers", "MoveMembers", "ManageNicknames", "ViewAuditLog", "MentionEveryone"] },
+    { "name": "🔧 Moderator", "color": "#3498DB", "hoist": true, "mentionable": true,
+      "permissions": ["ManageMessages", "KickMembers", "ModerateMembers", "MuteMembers", "MoveMembers", "ManageNicknames"] },
+    { "name": "💖 Teman Dekat", "color": "#E91E63", "hoist": true },
+    { "name": "🤖 Bot", "color": "#95A5A6" },
+    { "name": "🎮 Gamer", "color": "#9B59B6", "mentionable": true },
+    { "name": "😎 Member", "color": "#2ECC71" }
+  ],
+  "categories": [
+    {
+      "name": "📌 INFO",
+      "access": {
+        "@everyone": { "deny": ["SendMessages", "CreatePublicThreads"] },
+        "🛡️ Admin": { "allow": ["SendMessages"] }
+      },
+      "channels": [
+        { "name": "📜・aturan", "topic": "Baca dulu sebelum nongkrong ya!",
+          "message": "**Aturan {server}**\n\n1. Saling menghargai, jangan toxic berlebihan.\n2. Dilarang SARA, pornografi, dan konten ilegal.\n3. Dilarang spam dan promosi tanpa izin.\n4. Gunakan channel sesuai fungsinya.\n5. Keputusan admin dan moderator bersifat final.\n\nSelamat nongkrong! 🍻" },
+        { "name": "📢・pengumuman", "topic": "Info penting dari admin." },
+        { "name": "👋・selamat-datang", "topic": "Sambut teman baru di sini.", "systemChannel": true }
+      ]
+    },
+    {
+      "name": "💬 NGOBROL",
+      "channels": [
+        { "name": "💬・ngobrol", "topic": "Ngobrol bebas, apa aja boleh." },
+        { "name": "📸・foto-video", "topic": "Share foto dan video kamu." },
+        { "name": "😂・meme", "topic": "Tempat receh." },
+        { "name": "🎵・request-lagu", "topic": "Perintah bot musik di sini.", "slowmode": 3 }
+      ]
+    },
+    {
+      "name": "🎮 MAIN BARENG",
+      "channels": [
+        { "name": "🎮・cari-teman-main", "topic": "Cari party buat mabar." },
+        { "name": "🎮 Mabar 1", "type": "voice" },
+        { "name": "🎮 Mabar 2", "type": "voice" },
+        { "name": "🎮 Squad (4 orang)", "type": "voice", "userLimit": 4 }
+      ]
+    },
+    {
+      "name": "🔊 VOICE",
+      "channels": [
+        { "name": "🛋️ Santai", "type": "voice" },
+        { "name": "🎵 Musik", "type": "voice" },
+        { "name": "🎬 Nobar", "type": "voice" },
+        { "name": "😴 AFK", "type": "voice", "afk": true,
+          "access": { "@everyone": { "deny": ["Speak"] } } }
+      ]
+    },
+    {
+      "name": "🔒 STAFF",
+      "access": {
+        "@everyone": { "deny": ["ViewChannel"] },
+        "🛡️ Admin": { "allow": ["ViewChannel"] },
+        "🔧 Moderator": { "allow": ["ViewChannel"] }
+      },
+      "channels": [
+        { "name": "🔒・staff-chat", "topic": "Diskusi para staff." },
+        { "name": "📋・log", "topic": "Catatan moderasi." },
+        { "name": "🔒 Ruang Staff", "type": "voice" }
+      ]
+    }
+  ]
+}
